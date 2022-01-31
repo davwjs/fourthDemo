@@ -1,38 +1,436 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  font-family: "HelveticaNeue-CondensedBold", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 900;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f0d8bb;
+  color: #000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body:before {
+  animation: grain 8s steps(10) infinite;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png");
+  content: "";
+  height: 300%;
+  left: -50%;
+  opacity: 0.3;
+  position: fixed;
+  top: -100%;
+  width: 300%;
+}
+
+body.no-scroll {
+  overflow-y: hidden;
+}
+
+@keyframes grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  width: auto;
+  height: 100%;
+}
+
+.container.fluid {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+@media (max-width: 1408px) {
+  .container {
+    max-width: 1560px;
+  }
+}
+
+@media (max-width: 1216px) {
+  .container {
+    max-width: 1152px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 708px;
+  }
+}
+
+@media (max-width: 414px) {
+  .container {
+    max-width: 380px;
+    padding: 0 0;
+  }
+}
+
+.container .row {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+
+.container .row.space-between {
+  justify-content: space-between;
+}
+
+.container .row.center {
+  justify-content: center;
+}
+
+header {
+  font-size: 16px;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  font-weight: "700";
+}
+
+header .container .row {
+  height: 128px;
+}
+
+header .container .row .logo a {
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+header .container .row .menu {
+  cursor: pointer;
+  border-radius: 100%;
+  border: 1px solid #000;
+  height: 80px;
+  width: 80px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+header .container .row .menu:hover {
+  color: #fff;
+  background: #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+main .container {
+  position: relative;
+}
+
+main .container .row {
+  height: 100vh;
+  align-items: center;
+}
+
+main .container .row .image-container {
+  position: relative;
+}
+
+main .container .row .image-container .thumbnail {
+  overflow: hidden;
+  position: relative;
+}
+
+main .container .row .image-container .thumbnail .frame img {
+  width: 100%;
+}
+
+main .container .row .image-container .information {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+main .container .row .image-container .information .location span:nth-child(2) {
+  margin-left: 8px;
+}
+
+.single .container .top-row {
+  height: 50vh;
+  width: 100%;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 1440px) {
+  .single .container .top-row {
+    height: 30vh;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 1024px) {
+  .single .container .top-row {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .single .container .top-row {
+    height: 20vh;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .single .container .top-row {
+    height: 20vh;
+  }
+}
+
+.single .container .top-row .top {
+  padding-bottom: 40px;
+}
+
+.single .container .top-row .top .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.single .container .top-row .top .details .location span:nth-child(2) {
+  margin-left: 16px;
+}
+
+@media (max-width: 414px) {
+  .single .container .top-row .top .details .location span:nth-child(1) {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 414px) {
+  .single .container .top-row .top .details .location span:nth-child(2) {
+    margin-left: 6px;
+    font-size: 12px;
+  }
+}
+
+.single .container .top-row .top .details .mua {
+  text-transform: uppercase;
+}
+
+@media (max-width: 414px) {
+  .single .container .top-row .top .details .mua {
+    font-size: 12px;
+  }
+}
+
+.single .container .top-row .top .model {
+  overflow: hidden;
+}
+
+.single .container .top-row .top .model .first {
+  margin-right: 72px;
+}
+
+.single .container .top-row .top .model span {
+  display: inline-block;
+  position: relative;
+  font-weight: 400;
+  font-size: 224px;
+  font-family: "Maragsa";
+}
+@media screen and (max-width: 1740px) {
+  .single .container .top-row .top .model span {
+    font-size: 150px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .single .container .top-row .top .model span {
+    font-size: 128px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .single .container .top-row .top .model span {
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .single .container .top-row .top .model span {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .single .container .top-row .top .model span {
+    font-size: 30px;
+  }
+}
+
+.single .container .bottom-row {
+  height: 50vh;
+  position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+  .single .container .bottom-row {
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .single .container .bottom-row {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .single .container .bottom-row {
+    height: 40vh;
+  }
+}
+
+.single .container .bottom-row .bottom {
+  height: 100%;
+  width: 100%;
+}
+
+.single .container .bottom-row .bottom .thumbnail-single {
+  width: 100%;
+  height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+/* 속 이미지 */
+.single .container .bottom-row .bottom .thumbnail-single .frame-single img {
+  position: absolute;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .single .container .bottom-row .bottom .thumbnail-single .frame-single img {
+    height: 1200px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .single .container .bottom-row .bottom .thumbnail-single .frame-single img {
+    height: 1500px;
+  }
+}
+
+.single .container .bottom-row .scroll-for-more {
+  position: absolute;
+  bottom: 200px;
+  left: 200px;
+  z-index: 20;
+}
+
+.single .container .bottom-row .scroll-for-more .icon svg {
+  height: auto;
+  width: 28px;
+}
+
+.single .container .bottom-row .scroll-for-more .text {
+  margin-top: 8px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.detailed-information {
+  margin-top: 200px;
+  height: 600px;
+}
+
+.detailed-information .container .row {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .detailed-information .container .row {
+    padding-top: 150px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .detailed-information .container .row {
+    padding-top: 50px;
+  }
+}
+
+.detailed-information .container .row h2 {
+  font-size: 28px;
+}
+
+@media screen and (max-width: 414px) {
+  .detailed-information .container .row h2 {
+    font-size: 20px;
+  }
+}
+
+.detailed-information .container .row p {
+  font-family: "Helvetica Neue";
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  width: 800px;
+}
+
+@media screen and (max-width: 414px) {
+  .detailed-information .container .row p {
+    font-size: 13px;
+    line-height: 20px;
   }
 }
